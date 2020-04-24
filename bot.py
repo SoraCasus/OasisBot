@@ -30,10 +30,10 @@ async def on_message(message):
         await message.channel.send('Ben, my dear, it appears you\'re late again. I know you can do better dear...')
 
     if text.startswith('$smite'):
-		if text.length > 2:
-			await message.channel.send('*Smites {}*'.format(text.split()[1]))
-		else:
-			await message.channel.send('I\'m not sure who to smite here dear...')
+        if len(text.split()) > 1:
+            await message.channel.send('*Smites {}*'.format(text.split()[1]))
+        else:
+            await message.channel.send('I\'m not sure who to smite here dear...')
 
     if text.startswith('$oasis_on'):
         await message.channel.send("Oh, hello there dear")
