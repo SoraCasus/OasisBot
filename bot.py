@@ -1,5 +1,6 @@
 import discord
 import json
+import sys
 
 from get_memes import get_memes
 from profanity_check import predict, predict_prob
@@ -39,6 +40,8 @@ async def on_message(message):
         with open('settings.json', 'w') as outfile:
             json.dump(data, outfile)
 
+        await bot.change_presence(status=discord.Status.online, activity=discord.Game("Psychiatric help 5¢"))
+
     if text.startswith('$oasis_off'):
         await message.channel.send("Oh... I'll see myself out then...")
         data = {}
@@ -46,6 +49,8 @@ async def on_message(message):
 
         with open('settings.json', 'w') as outfile:
             json.dump(data, outfile)
+
+        await bot.change_presence(status=discord.Status.idle, activity=discord.Game("Crying in a corner"))
 
     if text.startswith('$meme'):
         # Scrape meme from reddit
