@@ -1,6 +1,7 @@
 import discord
 import json
 import sys
+import os
 
 from get_memes import get_memes
 from profanity_check import predict, predict_prob
@@ -9,7 +10,10 @@ from ctypes import *
 
 bot = discord.Client()
 
-rollLib = CDLL("clib.so")
+dirname = os.path.dirname(__file__)
+filename = os.path.join(dirname, "clib.so")
+
+rollLib = CDLL(filename)
 
 
 @bot.event
@@ -103,7 +107,6 @@ async def on_message(message):
 
     if '12' in text.lower():
         await message.channel.send("Ah yes, my blessed number!")
-
 
     if message.author.name == 'SampleTex':
         if randrange(10) == 1:
