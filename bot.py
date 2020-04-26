@@ -101,6 +101,10 @@ async def on_message(message):
     if '666' in text.lower():
         await message.channel.send("Shhhh, don't say that too loud.... he might hear you!")
 
+    if '12' in text.lower():
+        await message.channel.send("Ah yes, my blessed number!")
+
+
     if message.author.name == 'SampleTex':
         if randrange(10) == 1:
             await message.channel.send('Why would you mount a frisbee to your wall?')
