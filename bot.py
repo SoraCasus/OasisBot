@@ -5,8 +5,11 @@ import sys
 from get_memes import get_memes
 from profanity_check import predict, predict_prob
 from random import randrange
+from ctypes import *
 
 bot = discord.Client()
+
+rollLib = CDLL("clib.so")
 
 
 @bot.event
@@ -60,6 +63,10 @@ async def on_message(message):
         get_memes()
         # Send the meme
         await message.channel.send("", file=discord.File('meme.png'))
+
+    if text.startswith("$roll"):
+        await message.channel.send("Square of 10 is {}".format(rollLib.square(10)))
+        return
 
     active = False
     with open('settings.json') as jsonFile:
